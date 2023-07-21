@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+</head>
+<body>
+    <form method="GET">
+        <button type = "submit" th:action="/">Back</button>
+        <table border = '1' style="border:1 px solid black;">
+            <thead>
+                <tr>
+                    <th>Id:</th>
+                    <th>Description</th>
+                    <th>Address</th>
+                    <th>Price</th>
+                    <th>Amenities</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- need to include image url -->
+                    <td th:utext="${indv.description}"></td>
+                    <!-- need to include address.suburb and address.country also -->
+                    <td th:utext="${indv.addressStreet}"></td> 
+                    <td th:utext="${indv.price}"></td>
+                    <td th:utext="${indv.amenities}"></td>
+                    <td th:utext=""></td>
+                    <!-- details will link to objectId as a param to retrieve records -->
+                </tr>
+            </tbody>
+        </table>
+
+    </form method = "POST" th:action="@{/booking}" th:object="${Booking}">  
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" placeholder="Your name">
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" th:field="*{email}" placeholder="Your email">
+        <br>
+        <label for="date">Arrival:</label>
+        <input type="date" th:field="*{date}">
+        <br>
+        <label for="duration">Stay:</label>
+        <input type="text" th:field="*{duration}"> <p>days</p>
+        <br>
+        <button type="submit">Book</button>
+    <form>
+
+    </form>
+</body>
+</html>
