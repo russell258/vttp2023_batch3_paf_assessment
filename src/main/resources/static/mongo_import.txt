@@ -1,7 +1,0 @@
-// change directory
-C:\Users\Russe\OneDrive\Desktop\VISA VTTP\03-paf\pafassessment\vttp2023_batch3_paf_assessment_template_2023_07_16-10_58_04\vttp2023_batch3_paf_assessment\data
-
-// import listing.json
-mongoimport -h localhost --port 27017 -d listings -c listing --type=json listings.json
-
-//no jsonArray as no square brackets
