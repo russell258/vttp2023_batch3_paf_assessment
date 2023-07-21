@@ -35,14 +35,14 @@ public class ListingsController {
 	public String searchPage(Model model, @RequestParam("country") String country, @RequestParam("numberOfPerson") Integer numberOfPerson,
 						@RequestParam("minPrice") double minPrice, @RequestParam("maxPrice") double maxPrice){
 		List<ListingDetails> ldList = svc.findListingsPriceDesc(country, numberOfPerson, minPrice, maxPrice);
-		model.addAttribute("ListingDetailsList", ldList);
+		model.addAttribute("ldList", ldList);
 	
 		//for ListingDetails ld :  ldList each in thymeleaf to populate
 		return "listingPage";
 	}
 
 	//TODO: Task 4
-	
+	@GetMapping(path="/{}")
 
 	//TODO: Task 5
 

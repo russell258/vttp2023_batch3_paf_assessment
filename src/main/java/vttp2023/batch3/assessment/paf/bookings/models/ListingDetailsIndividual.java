@@ -7,9 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ListingDetails {
+public class ListingDetailsIndividual {
+    private String accId;
+    private String description;
     private String street;
-    private String url;
+    private String suburb;
+    private String country;
+    private String image;
     private double price;
-    private String objectId;
+    private String amenities;
 }

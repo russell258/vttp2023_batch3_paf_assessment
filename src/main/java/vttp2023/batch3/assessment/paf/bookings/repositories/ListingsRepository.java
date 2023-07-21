@@ -11,8 +11,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import vttp2023.batch3.assessment.paf.bookings.models.Listing;
 import vttp2023.batch3.assessment.paf.bookings.models.ListingDetails;
+import vttp2023.batch3.assessment.paf.bookings.models.ListingDetailsIndividual;
 
 @Repository
 public class ListingsRepository {
@@ -93,14 +93,39 @@ public class ListingsRepository {
 			ld.setStreet(d.getString("address.street"));
 			ld.setPrice(d.getDouble("price"));
 			ld.setUrl(d.getString("images.picture_url"));
-			ld.setObjectId(d.getInteger("_id"));
+			ld.setObjectId(d.getString("_id"));
 			listpojo.add(ld);
 		}
 
 		return listpojo;
 	}
 	//TODO: Task 4
-	
+
+	// find individual listing details by id (from href details) and projection.
+	// db.listing.find({
+	// 	_id:'10108388'},
+	// 	{_id:1,description:1,'address.street':1,'address.suburb':1,'address.country':1,'images.picture_url':1,price:1,amenities:1}
+	// 	)
+
+	public ListingDetailsIndividual getIndividualDetailsById(String objectId){
+		Criteria c = Criteria.where("_id").is(objectId);
+		Query q = Query.query(c);
+		q.fields().include("_id","description",
+								"address.street","address.suburb",
+								"address.country","images.picture_url","price","amenities");
+		Document d= mongo.findOne(q,Document.class,"listing");
+		ListingDetailsIndividual indvDetails = new ListingDetailsIndividual();
+		indvDetails.setAccId(d.getString("_id"));
+		indvDetails.setDescription(d.getString("description"));
+		indvDetails.setStreet(d.getString("address.street"));
+		indvDetails.setSuburb(d.getString("address.suburb"));
+		indvDetails.setCountry(d.getString("address.country"));
+		indvDetails.setImage(d.getString("images.picture_url"));
+		indvDetails.setPrice(d.getDouble("price"));
+		indvDetails.setAmenities(d.getString("amenities"));
+		
+		return indvDetails;
+	}
 
 	//TODO: Task 5
 

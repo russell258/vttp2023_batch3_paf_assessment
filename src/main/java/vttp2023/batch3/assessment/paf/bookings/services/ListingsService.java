@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import vttp2023.batch3.assessment.paf.bookings.models.Listing;
 import vttp2023.batch3.assessment.paf.bookings.models.ListingDetails;
+import vttp2023.batch3.assessment.paf.bookings.models.ListingDetailsIndividual;
 import vttp2023.batch3.assessment.paf.bookings.repositories.ListingsRepository;
 
 @Service
@@ -40,6 +41,10 @@ public class ListingsService {
 
 	//TODO: Task 4
 	
+	//individual listing details retrieved by id
+	public ListingDetailsIndividual findListingDetailsById(String id){
+		return repo.getIndividualDetailsById(id);
+	}
 
 	//TODO: Task 5
 

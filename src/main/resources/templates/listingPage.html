@@ -6,6 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form method="GET">
+        <button type = "submit" formaction="/">Back</button>
+        <table border = '1' style="border:1 px solid black;">
+            <thead>
+                <tr>
+                    <th>Address Street</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ld:${ldList}">
+                    <td th:utext="ld.street"></td>
+                    <td th:utext="ld.price"></td>
+                    <td th:utext="ld.url"></td>
+                    <td th:utext="ld.objectId"><a data-th-href="@{/ld.objectId}">Details</a></td>
+                    <!-- details will link to objectId as a param to retrieve records -->
+                </tr>
+            </tbody>
+        </table>
+    </form>
 </body>
 </html>
