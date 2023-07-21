@@ -20,5 +20,12 @@ public class Listing {
     private Integer numberOfPerson;
 
     @Size(min=1, max=10000, message = "price only between 1 to 10000 inclusive")
+    private double minPrice;
+
+    @Size(min=1, max=10000, message = "price only between 1 to 10000 inclusive")
+    private double maxPrice;
+
+    private String street;
+    private String url;
     private double price;
 }
